@@ -1,3 +1,10 @@
+var contact = {
+    firstName: 'Romain',
+    hello: function() {
+        return 'Bonjour je suis ' + firstName;
+    }
+};
+
 // Fonction constructeur avec Closure
 
 var Contact = function(firstName) {
@@ -39,3 +46,21 @@ for (var prop in romain) {
 }
 
 console.log(romain.lastName); // undefined
+
+var Formateur = function(firstName, speciality) {
+    Contact.apply(this, arguments);
+    this._speciality = speciality;
+};
+
+Formateur.prototype = Object.create(Contact.prototype);
+
+Formateur.prototype.hello = function() {
+    return Contact.prototype.hello.call(this) + ', ma spé est ' + this._speciality;
+};
+
+var romain = new Formateur('Romain', 'JS');
+console.log(romain._firstName);
+console.log(romain.hello());
+console.log(romain instanceof Contact);
+console.log(romain instanceof Formateur);
+console.log(romain instanceof Object);
