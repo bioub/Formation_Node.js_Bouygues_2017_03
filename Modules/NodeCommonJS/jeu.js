@@ -2,48 +2,18 @@
 
 const readline = require('readline');
 
+const random = require('./random');
+
 const rl = readline.createInterface({
     input: process.stdin,
     output: process.stdout
 });
 
-// 1 - Remplacer les function declaration
-// par des function expression dans des constantes
-const getRandom = function () {
-    return Math.random();
-};
-
-const getRandomArbitrary = function (min, max) {
-    return Math.floor(Math.random() * (max - min)) + min;
-};
-
-const getRandomInt = function (min, max) {
-    min = Math.ceil(min);
-    max = Math.floor(max);
-    return Math.floor(Math.random() * (max - min)) + min;
-};
-
-const getRandomIntInclusive = function (min, max) {
-    min = Math.ceil(min);
-    max = Math.floor(max);
-    return Math.floor(Math.random() * (max - min + 1)) + min;
-};
-
-// 1bis / Remplacer tous les var par let ou const
-// 1ter / utiliser le mode strict
-// 2 / Remplacer Jeu par une classe
-// 3 / Remplacer les 3 premières lignes de options par
-// un default params
-// ex: https://www.sitepoint.com/es6-default-parameters/
-// function createElement (tag = 'div', {
-//   content = 'Very default',
-//       classNames = ['module-text', 'special']
-//   } = {}) { }
 class Jeu {
     constructor({min = 0, max = 100} = {}) {
         this._min = min;
         this._max = max;
-        this._entierAlea = getRandomIntInclusive(this._min, this._max);
+        this._entierAlea = random.getIntInclusive(this._min, this._max);
         this._essais = [];
     }
 
@@ -82,20 +52,4 @@ class Jeu {
     }
 }
 
-var jeu = new Jeu({
-    min: 10,
-    max: 20
-});
-jeu.jouer();
-
-
-
-
-
-
-
-
-
-
-
-
+module.exports = Jeu;
