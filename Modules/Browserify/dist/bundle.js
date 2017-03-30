@@ -32,7 +32,7 @@
         };
 
         changeBgColor();
-        setTimeout(changeBgColor, 1000);
+        setInterval(changeBgColor, 1000);
 
     }, {"./random": 2}], 2: [function (require, module, exports) {
         'use strict';

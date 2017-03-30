@@ -1,15 +1,15 @@
 var contact = {
-    firstName: 'Romain',
-    hello: function() {
-        return 'Bonjour je suis ' + firstName;
-    }
+  firstName: 'Romain',
+  hello: function() {
+    return 'Bonjour je suis ' + firstName;
+  }
 };
 
 // Fonction constructeur avec Closure
 
 var Contact = function(firstName) {
   this.hello = function() {
-      return 'Bonjour je suis ' + firstName;
+    return 'Bonjour je suis ' + firstName;
   };
 };
 
@@ -24,11 +24,11 @@ console.log(romain.hello === eric.hello); // false
 // Fonction constructeur avec Prototype
 
 var Contact = function(firstName) {
-    this._firstName = firstName;
+  this._firstName = firstName;
 };
 
 Contact.prototype.hello = function() {
-    return 'Bonjour je suis ' + this._firstName;
+  return 'Bonjour je suis ' + this._firstName;
 };
 
 var romain = new Contact('Romain');
@@ -39,23 +39,23 @@ console.log(eric.hello());
 console.log(romain.hello === eric.hello); // true
 
 for (var prop in romain) {
-    if (romain.hasOwnProperty(prop)) {
-        console.log(prop); // '_firstName'
-        console.log(romain[prop]); // 'Romain'
-    }
+  if (romain.hasOwnProperty(prop)) {
+    console.log(prop); // '_firstName'
+    console.log(romain[prop]); // 'Romain'
+  }
 }
 
 console.log(romain.lastName); // undefined
 
 var Formateur = function(firstName, speciality) {
-    Contact.apply(this, arguments);
-    this._speciality = speciality;
+  Contact.apply(this, arguments);
+  this._speciality = speciality;
 };
 
 Formateur.prototype = Object.create(Contact.prototype);
 
 Formateur.prototype.hello = function() {
-    return Contact.prototype.hello.call(this) + ', ma spé est ' + this._speciality;
+  return Contact.prototype.hello.call(this) + ', ma spé est ' + this._speciality;
 };
 
 var romain = new Formateur('Romain', 'JS');

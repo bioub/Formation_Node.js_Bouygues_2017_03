@@ -3,30 +3,30 @@
 const readline = require('readline');
 
 const rl = readline.createInterface({
-    input: process.stdin,
-    output: process.stdout
+  input: process.stdin,
+  output: process.stdout
 });
 
 // 1 - Remplacer les function declaration
 // par des function expression dans des constantes
 const getRandom = function () {
-    return Math.random();
+  return Math.random();
 };
 
 const getRandomArbitrary = function (min, max) {
-    return Math.floor(Math.random() * (max - min)) + min;
+  return Math.floor(Math.random() * (max - min)) + min;
 };
 
 const getRandomInt = function (min, max) {
-    min = Math.ceil(min);
-    max = Math.floor(max);
-    return Math.floor(Math.random() * (max - min)) + min;
+  min = Math.ceil(min);
+  max = Math.floor(max);
+  return Math.floor(Math.random() * (max - min)) + min;
 };
 
 const getRandomIntInclusive = function (min, max) {
-    min = Math.ceil(min);
-    max = Math.floor(max);
-    return Math.floor(Math.random() * (max - min + 1)) + min;
+  min = Math.ceil(min);
+  max = Math.floor(max);
+  return Math.floor(Math.random() * (max - min + 1)) + min;
 };
 
 // 1bis / Remplacer tous les var par let ou const
@@ -40,51 +40,55 @@ const getRandomIntInclusive = function (min, max) {
 //       classNames = ['module-text', 'special']
 //   } = {}) { }
 class Jeu {
-    constructor({min = 0, max = 100} = {}) {
-        this._min = min;
-        this._max = max;
-        this._entierAlea = getRandomIntInclusive(this._min, this._max);
-        this._essais = [];
-    }
+  constructor({min = 0, max = 100} = {}) {
+    this._min = min;
+    this._max = max;
+    this._entierAlea = getRandomIntInclusive(this._min, this._max);
+    this._essais = [];
+  }
 
-    jouer() {
-        if (this._essais.length) {
+  jouer() {
+    if (this._essais.length) {
             // 4 - Utiliser une template string
-            console.log(`Vous avez déjà joué : ${this._essais.join(', ')}`);
-        }
+      console.log(`Vous avez déjà joué : ${this._essais.join(', ')}`);
+    }
 
         // 5 - Utiliser une arrow function et remplacer that par this
-        rl.question('Quel est le nombre ? ', reponse => {
+    rl.question('Quel est le nombre ? ', reponse => {
 
             // 6 - Remplacer parseInt et isNaN par Number.parseInt...
-            const entierSaisi = Number.parseInt(reponse);
+      const entierSaisi = Number.parseInt(reponse);
 
-            if (Number.isNaN(entierSaisi)) {
-                console.log('Erreur : il faut saisir un nombre');
-                return this.jouer();
-            }
+      if (Number.isNaN(entierSaisi)) {
+        console.log('Erreur : il faut saisir un nombre');
+        return this.jouer();
+      }
 
-            this._essais.push(entierSaisi);
+      this._essais.push(entierSaisi);
 
-            if (entierSaisi < this._entierAlea) {
-                console.log('Trop petit');
-                return this.jouer();
-            }
+      if (entierSaisi < this._entierAlea) {
+        console.log('Trop petit');
+        return this.jouer();
+      }
 
-            if (entierSaisi > this._entierAlea) {
-                console.log('Trop grand');
-                return this.jouer();
-            }
+      if (entierSaisi > this._entierAlea) {
+        console.log('Trop grand');
+        return this.jouer();
+      }
 
-            console.log('Gagné');
-            rl.close();
-        });
-    }
+      console.log('Gagné');
+      rl.close();
+    });
+  }
 }
 
-var jeu = new Jeu({
-    min: 10,
-    max: 20
+
+console.log(typeof Jeu); // function
+console.log(typeof Jeu.prototype.jouer); // function
+
+const jeu = new Jeu({
+  min: 10,
+  max: 20
 });
 jeu.jouer();
 

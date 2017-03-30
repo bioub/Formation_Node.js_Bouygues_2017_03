@@ -1,0 +1,6 @@
+{
+  "name": "langage",
+  "devDependencies": {
+    "eslint": "^3.18.0"
+  }
+}

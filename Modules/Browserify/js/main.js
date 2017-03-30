@@ -8,4 +8,4 @@ const changeBgColor = function() {
 };
 
 changeBgColor();
-setTimeout(changeBgColor, 1000);
+setInterval(changeBgColor, 1000);

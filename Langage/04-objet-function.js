@@ -1,6 +1,6 @@
 
 var contact = {
-    firstName: 'Romain'
+  firstName: 'Romain'
 };
 
 global.firstName = 'Eric';
@@ -10,7 +10,7 @@ console.log(firstName); // 'Eric';
 
 
 const hello = function(p1, p2) {
-    return `Bonjour ${p1}, bonjour ${p2} je suis ${this.firstName}`;
+  return `Bonjour ${p1}, bonjour ${p2} je suis ${this.firstName}`;
 };
 
 console.log(hello('Toto', 'Titi')); // Bonjour je suis Eric
