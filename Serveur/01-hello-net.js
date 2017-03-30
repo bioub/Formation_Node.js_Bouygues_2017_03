@@ -1,0 +1,19 @@
+const net = require('net');
+const readline = require('readline');
+
+const server = net.createServer((c) => {
+    console.log('Client connected');
+    c.write('Hello\n');
+    const rl = readline.createInterface({
+        input: c
+    });
+
+    rl.on('line', line => {
+        console.log('Client : ' + line);
+    });
+
+});
+
+server.listen(1234, () => {
+   console.log('Server started');
+});
