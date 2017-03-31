@@ -1,0 +1,7 @@
+{
+  "name": "callback-hell-hello",
+  "dependencies": {
+    "async": "^2.2.0",
+    "fs-promise": "^2.0.2"
+  }
+}
