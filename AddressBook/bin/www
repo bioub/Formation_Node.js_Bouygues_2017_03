@@ -7,8 +7,6 @@
 var app = require('../app');
 var debug = require('debug')('addressbook:server');
 var http = require('http');
-var mongoose = require('mongoose');
-mongoose.connect('mongodb://localhost/test');
 
 /**
  * Get port from environment and store in Express.
