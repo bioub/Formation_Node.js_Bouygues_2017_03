@@ -4,6 +4,7 @@ const contacts = [{prenom: 'Romain'}];
 
 const app = express();
 
+// Route
 app.get('/', (req, res, next) => {
     res.send('<h2>Home</h2>');
 });

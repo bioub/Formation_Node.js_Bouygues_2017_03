@@ -8,6 +8,10 @@ const server = net.createServer((c) => {
         input: c
     });
 
+    c.on('close', () => {
+        console.log('Client disconnected');
+    });
+
     rl.on('line', line => {
         console.log('Client : ' + line);
     });

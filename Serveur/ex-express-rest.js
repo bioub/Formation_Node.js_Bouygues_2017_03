@@ -48,7 +48,6 @@ app.delete('/api/contacts/:id', (req, res, next) => {
         return res.json({
             err: 'Contact Not Found'
         });
-
     }
 
     contacts.splice(i, 1);

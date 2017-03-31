@@ -28,7 +28,7 @@ catch(err) {
 
 try {
     let dataCss = fs.readFileSync(path.resolve(__dirname, 'css/style.css'));
-    fs.writeFileSync(path.resolve(__dirname, 'dist/css/style.css'), dataCss.toString());
+    fs.writeFileSync(path.resolve(__dirname, 'dist/css/style.css'), dataCss);
 
     let data = fs.readFileSync(path.resolve(__dirname, 'index.html'));
     let contenuIndex = data.toString();

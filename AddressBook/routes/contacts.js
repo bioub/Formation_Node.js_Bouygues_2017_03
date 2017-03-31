@@ -13,12 +13,20 @@ const contacts = [{
 
 /* Liste des contacts (balise table ou ul) */
 router.get('/', function(req, res, next) {
-  res.render('contacts/list', { contacts: contacts });
+  res.render('contacts/list', {contacts});
 });
 
 /* Afficher un contact */
 router.get('/:id', function(req, res, next) {
-    // TODO
+    const id = req.params.id;
+
+    const contact = contacts.find(contact => contact.id === Number(id));
+
+    if (!contact) {
+        return next();
+    }
+
+    res.render('contacts/show', {contact});
 });
 
 module.exports = router;

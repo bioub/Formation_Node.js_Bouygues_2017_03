@@ -15,9 +15,7 @@ const server = http.createServer((req, res) => {
         break;
         case '/redirect':
             res.statusCode = 302;
-            res.setHeader('Content-type', 'text/html; charset=UTF-8');
             res.setHeader('Location', '/');
-            body = '<h2>Redirect</h2>';
             break;
         case '/contacts':
             res.setHeader('Content-type', 'text/html; charset=UTF-8');
